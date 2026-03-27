@@ -11,6 +11,7 @@
             line-height: 1.6;
             max-width: 800px;
             margin: auto;
+            text-align: center; /* Center everything for a cleaner look */
         }
 
         h1 {
@@ -19,9 +20,10 @@
         }
 
         .intro-text {
-            font-size: 20px;
+            font-size: 15px;
             color: black;
             font-family: 'Apple Chancery', 'Segoe Script', 'Comic Sans MS', cursive;
+            text-align: left; /* Keep the paragraph text left-aligned */
         }
 
         .result-text {
@@ -40,9 +42,24 @@
 
         button {
             padding: 10px 15px;
-            font-size: 20px;
             cursor: pointer;
             margin-top: 15px;
+            font-family: inherit;
+        }
+
+        /* Bunny Section Styles */
+        #bunny-container {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px dashed #ccc;
+        }
+
+        #bunny-gif {
+            display: none; /* Hide the GIF by default */
+            margin: 20px auto;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -60,11 +77,15 @@
     <button onclick="showSecret()">click to see what's inside ;)</button>
     <div id="secret-message" class="result-text"></div>
 
-    <p class="intro-text">Now that you know I can write (extremely) simple script, let's connect, if you do want my talent.</p>
+    <p>now that you know I can write (extremely) simple script, let's connect, if you do want my talent.</p>
 
     <button onclick="showContact()">click to see my contact details</button>
     <div id="contact-area"></div>
 
+    <div id="bunny-container">
+        <button onclick="showBunny()">here's a bunny for you 🐰</button>
+        <img id="bunny-gif" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWk5NjA3dTI0NDJrc2wxMzJuZmRsamloM2xlOHpwb2dyYjg4a3lhMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wsJHi6a1JwoXC/giphy.gif" alt="A fun bunny GIF">
+    </div>
     <script>
         function showSecret() {
             document.getElementById('secret-message').innerHTML = "nothing really, just a button to show you I know how to do it.";
@@ -74,6 +95,18 @@
             const email = "mailto:ngocnhuthuy.nguyen@gmail.com";
             const contactArea = document.getElementById('contact-area');
             contactArea.innerHTML = `<a href="${email}" class="contact-link">${email}</a>`;
+        }
+
+        // --- NEW BUNNY JAVASCRIPT ---
+        function showBunny() {
+            const bunnyGif = document.getElementById('bunny-gif');
+            
+            // This is a "toggle" function. It shows the GIF if hidden, and hides it if shown.
+            if (bunnyGif.style.display === "block") {
+                bunnyGif.style.display = "none";
+            } else {
+                bunnyGif.style.display = "block";
+            }
         }
     </script>
 
