@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuy's JS Experiment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #8B0000; /* Dark Bold Red */
+            font-weight: bold;
+        }
+
+        .intro-text {
+            font-size: 20px;
+            color: black;
+            font-family: 'Apple Chancery', 'Segoe Script', 'Comic Sans MS', cursive;
+        }
+
+        .result-text {
+            color: red;
+            margin-top: 10px;
+            font-weight: normal;
+        }
+
+        .contact-link {
+            color: red;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to my first Javascript experiment</h1>
+
+    <div class="intro-text">
+        <p>My name is Thuy Nguyen, a digital marketer turned marketing automation enthusiast! First of all, thank you for taking the time to get to know me and my very humble JS skills.</p>
+        <p>Now let's get started.</p>
+        <p>I plan to show you that I know how to place functional buttons on a webpage.</p>
+        <p>So, here it is.</p>
+    </div>
+
+    <button onclick="showSecret()">click to see what's inside ;)</button>
+    <div id="secret-message" class="result-text"></div>
+
+    <p class="intro-text">Now that you know I can write (extremely) simple script, let's connect, if you do want my talent.</p>
+
+    <button onclick="showContact()">click to see my contact details</button>
+    <div id="contact-area"></div>
+
+    <script>
+        function showSecret() {
+            document.getElementById('secret-message').innerHTML = "nothing really, just a button to show you I know how to do it.";
+        }
+
+        function showContact() {
+            const email = "mailto:ngocnhuthuy.nguyen@gmail.com";
+            const contactArea = document.getElementById('contact-area');
+            contactArea.innerHTML = `<a href="${email}" class="contact-link">${email}</a>`;
+        }
+    </script>
+
+</body>
+</html>
