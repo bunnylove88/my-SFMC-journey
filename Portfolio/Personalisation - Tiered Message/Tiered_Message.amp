@@ -1,0 +1,40 @@
+%%[
+
+/* Declare variables */
+var @sk, @firstName, @rows, @rowCount, @row, @current, @diff, @tier, @msg
+
+/* Set value for @sk */
+set @sk = AttributeValue("SubscriberKey")
+
+/* Retrieve usable data in the row of the @sk */
+set @rows = LookupRows("Loyalty_Members", "SubscriberKey", @sk)
+set @rowCount = RowCount(@rows)
+if @rowCount > 0 then
+    set @row = Row(@rows, 1)
+    set @tier = Field(@row, "Tier")
+    set @current = TreatAsNumber(Field(@row, "CurrentPoints"))
+    set @firstName = Field(@row, "FirstName")
+endif
+
+/* Set fallback for blank @firstName */
+if Empty(@firstName) then
+    set @firstName = "Valued Customer"
+endif
+
+/* Calculate point difference to reach next tier & set message for each tier */
+if @tier == "Bronze" then
+    set @diff = Subtract(500, @current)
+    set @msg = Concat("You need ", @diff, " more points to reach the next tier.")
+elseif @tier == "Silver" then
+    set @diff = Subtract(1000, @current)
+    set @msg = Concat("You need ", @diff, " more points to reach the next tier.")
+elseif @tier == "Gold" then
+    set @msg = "You are at the max tier."
+else
+    set @msg = "Start shopping to earn points for rewards."
+endif
+
+]%%
+
+<!-- Render personalized loyalty message -->
+<p>Hi %%=ProperCase(@firstName)=%%, you have %%=v(@current)=%% points. %%=v(@msg)=%%.</p>
