@@ -21,5 +21,5 @@ ON c.SubscriberKey = o.SubscriberKey
 AND o.EventDate > DATEADD(day, -30, GETDATE())
 
 WHERE c.Status = 'Active'
-AND c.TotalLTV > 500
+AND r.TotalAmount > 500
 AND o.SubscriberKey is null
